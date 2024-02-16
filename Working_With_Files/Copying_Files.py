@@ -1,5 +1,7 @@
 import shutil
 
+#To copy files or folders from one location to another location
+#here location can represent Either "file" or "folder"
 def copy_file(src,dest):
     shutil.copy(src,dest)
 
