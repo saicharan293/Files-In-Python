@@ -8,18 +8,30 @@ def save_dict(fname,lname,dob,salary,email,phone):
     dict={'fname':fname,'lname':lname,'dob':dob,'salary':salary,"email":email,"phone":phone}
     listing.append(dict)
 
-count=0
-for i in range(records):
-    fname=input("enter fname: ")
-    lname=input('enter lname: ')
-    dob=input("Enter dob: ")
-    salary=int(input("enter salary: "))
-    email=input("Enter email: ")
-    phone=int(input("Enter mobile number: "))
-    count+=1
-    print(f"---{count} insertion(s) completed---")
-    save_dict(fname,lname,dob,salary,email,phone)
+def add_employee():
+    count=0
+    for i in range(records):
+        fname=input("enter fname: ")
+        lname=input('enter lname: ')
+        dob=input("Enter dob: ")
+        salary=int(input("enter salary: "))
+        email=input("Enter email: ")
+        phone=int(input("Enter mobile number: "))
+        count+=1
+        print(f"---{count} insertion(s) completed---")
+        save_dict(fname,lname,dob,salary,email,phone)
 
+# def add_employee(): 
+#     fname=input("enter fname: ")
+#     lname=input('enter lname: ')
+#     dob=input("Enter dob: ")
+#     salary=int(input("enter salary: "))
+#     email=input("Enter email: ")
+#     phone=int(input("Enter mobile number: "))
+     
+    # dict={'fname':fname,'lname':lname,'dob':dob,'salary':salary,"email":email,"phone":phone}
+    # save_dict(fname,lname,dob,salary,email,phone)
+    # listing.append(dict)
 # print(type(list_employees))
 
 def Display_employees(listing):
@@ -69,6 +81,7 @@ def dob_in_employees(start,end):
     
 
 
+
 # Search the function based on the inputs given by the user
 # print fname, lname, email, phone, dob, salary
 # sort_employees('salary')
@@ -76,10 +89,11 @@ def dob_in_employees(start,end):
 # nth_salary(3)
 
 def main():
+    add_employee()
     Display_employees(listing)
     while listing:
         print('Choose the options to begin the search based on below options ')
-        print('1.Search \n2.Sort \n3.dob \n4.nth highest salary \n5.end')
+        print('1.Search \n2.Sort \n3.dob \n4.nth highest salary \n5.Add employee \n6.end')
         enter=int(input())
         try:
             match(enter):
@@ -97,10 +111,15 @@ def main():
                 case 4:
                     high=int(input("Enter the highest place of salary "))
                     nth_salary(high)
+
                 case 5:
+                    add_employee()
+                    Display_employees(listing)
+                case 6:
                     break
-        except:
-            raise print("Invalid choice")
+
+        except ValueError:
+            print("Invalid choice")
 
 main()
 
