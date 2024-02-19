@@ -8,22 +8,27 @@ def save_dict(fname,lname,dob,salary,email,phone):
     dict={'fname':fname,'lname':lname,'dob':dob,'salary':salary,"email":email,"phone":phone}
     listing.append(dict)
 
-count=0
-for i in range(records):
-    fname=input("enter fname: ")
-    lname=input('enter lname: ')
-    dob=input("Enter dob: ")
-    salary=int(input("enter salary: "))
-    email=input("Enter email: ")
-    phone=int(input("Enter mobile number: "))
-    count+=1
-    print(f"---{count} insertion(s) completed---")
-    save_dict(fname,lname,dob,salary,email,phone)
+def add_employee():
+    count=0
+    for i in range(records):
+        fname=input("enter fname: ")
+        lname=input('enter lname: ')
+        dob=input("Enter dob: ")
+        salary=int(input("enter salary: "))
+        email=input("Enter email: ")
+        phone=int(input("Enter mobile number: "))
+        count+=1
+        print(f"---{count} insertion(s) completed---")
+        save_dict(fname,lname,dob,salary,email,phone)
 
 # print(type(list_employees))
 
+def Display_employees(listing):
+    for emp in listing:
+        print(emp)
 
-def Searh_Employees(word):
+
+def Search_Employee(word):
     for outer in listing:
           for key,value in outer.items():
             if isinstance(value,str) and str(word) in value:
@@ -34,6 +39,7 @@ def Searh_Employees(word):
                 break
 
 def sort_employees(option):
+    
     sorted_list=sorted(listing,key=lambda x: x[option])
     for person in sorted_list:
       print(person)
@@ -54,7 +60,7 @@ def dob_in_employees(start,end):
     start_date=datetime.datetime.strptime(start,'%Y-%m-%d')
     end_date=datetime.datetime.strptime(end,'%Y-%m-%d')
     
-    #list comprehension
+    #list comprehension along with lambda function
 
     filetered_list=[employee for employee in listing if start_date<=datetime.datetime.strptime(employee['dob'],'%Y-%m-%d')<=end_date]
 
@@ -72,37 +78,41 @@ def dob_in_employees(start,end):
 # nth_salary(3)
 
 def main():
+    Display_employees(listing)
     while listing:
         print('Choose the options to begin the search based on below options ')
         print('1.Search \n2.Sort \n3.dob \n4.nth highest salary \n5.end')
         enter=int(input())
         try:
-            match(enter):
-                case 1:
-                    user_input=input("Search based on: ?  ")
-                    Searh_Employees(user_input)
-                case 2:
-                    user_choice=input('Sort the values based on: ? ')
-                    sort_employees(user_choice)
-                case 3:
-                    print("sort out the employees between given dates below")
-                    start=input("Enter the starting date in 'YYYY-mm-dd' format ")
-                    end=input("Enter the ending date in 'YYYY-mm-dd' format ")
-                    dob_in_employees(start,end)
-                case 4:
-                    high=int(input("Enter the highest place of salary "))
-                    nth_salary(high)
-                case 5:
-                    break
-        except:
-            raise print("Invalid choice")
+            if enter == 1:
+                user_input = input("Search based on: ?  ")
+                Search_Employee(user_input)
+            elif enter == 2:
+                user_choice = input('Sort the values based on: ? ')
+                sort_employees(user_choice)
+            elif enter == 3:
+                print("sort out the employees between given dates below")
+                start = input("Enter the starting date in 'YYYY-mm-dd' format ")
+                end = input("Enter the ending date in 'YYYY-mm-dd' format ")
+                dob_in_employees(start, end)
+            elif enter == 4:
+                high = int(input("Enter the highest place of salary "))
+                nth_salary(high)
+            elif enter == 5:
+                add_employee()
+                Display_employees(listing)
+                break
+            else:
+                print("Invalid choice")
+        except ValueError:
+            print("Invalid choice")
 
 main()
 
 # listing_keys = listing[0].keys()
     # print(list(listing_keys))
     # user_input=input("your option is: ?  ")
-    # Searh_Employees(user_input)
+    # Search_Employee(user_input)
 
     # print('Provide the user choice to sort the list from the below options ')
     # listing_keys = listing[0].keys()

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results</title>
+    <style>
+        /* Add your CSS styles here */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+        .button2 {
+            background-color: #04AA6D;
+            border: none;
+            color: white;
+            padding: 10px 25px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 16px;
+            margin: 4px auto;
+            cursor: pointer;
+            border-radius: 20px;
+            width: 200px;
+        }
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        select, input[type="text"], button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            box-sizing: border-box; /* Ensure padding and border are included in the width */
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Search Results</h1>
+    <form action="/search" method="GET">
+        <label for="search_field">Search By:</label>
+        <select name="search_field" id="search_field">
+            <option value="fname">First Name</option>
+            <option value="lname">Last Name</option>
+            <option value="dob">Date of Birth</option>
+            <option value="salary">Salary</option>
+            <option value="email">Email</option>
+            <option value="phone">Phone</option>
+        </select>
+        <br>
+        <label for="search_term">Search Term:</label>
+        <input type="text" name="search_term" id="search_term" required>
+        <br>
+        <button type="submit">Search</button>
+    </form>
+
+    
+    
+    <table>
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Date of Birth</th>
+                <th>Salary</th>
+                <th>Email</th>
+                <th>Phone</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for employee in search %}
+            <tr>
+                <td>{{ employee.fname }}</td>
+                <td>{{ employee.lname }}</td>
+                <td>{{ employee.dob }}</td>
+                <td>{{ employee.salary }}</td>
+                <td>{{ employee.email }}</td>
+                <td>{{ employee.phone }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <button class="button2"><a href="/" class="button2">back to form</a></button>
+</body>
+
+</html>

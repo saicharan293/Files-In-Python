@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Operations</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1,
+        h2 {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #fff;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="date"],
+        input[type="number"],
+        input[type="email"],
+        input[type="tel"] {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: calc(100% - 22px);
+            box-sizing: border-box;
+            font-size: 18px;
+
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .button2 {
+            background-color: #04AA6D;
+            border: none;
+            color: white;
+            padding: 10px 25px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 16px;
+            margin: 4px auto;
+            cursor: pointer;
+            border-radius: 20px;
+            width: 200px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th,
+        td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        a {
+            text-decoration: none;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Employee Enrollment</h1>
+    <form action="/submit" method="post">
+        <label for="fname">First Name:</label>
+        <input type="text" name="fname" id="fname" required>
+        <br>
+        <label for="lname">Last Name:</label>
+        <input type="text" name="lname" id="lname" required>
+        <br>
+        <label for="dob">Date of Birth:</label>
+        <input type="date" name="dob" id="dob" required>
+        <br>
+        <label for="salary">Salary:</label>
+        <input type="number" name="salary" id="salary" required>
+        <br>
+        <label for="email">Email:</label>
+        <input type="email" name="email" id="email" required>
+        <br>
+        <label for="phone">Phone:</label>
+        <input type="tel" name="phone" id="phone" required>
+        <br>
+        <button type="submit">Enroll</button>
+    </form>
+    <hr>
+    <div class="button-div" style="display: flex;">
+        <button class="button2"><a href="/search">Search</a></button>
+        <button class="button2"><a href="/display">Sort</a></button>
+        <button class="button2"><a href="/display" class="button2">All employees</a></button>
+    </div>
+
+</body>
+
+</html>
