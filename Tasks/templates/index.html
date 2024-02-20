@@ -4,203 +4,121 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
     <title>Employee Operations</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
-            margin: 0;
-            padding: 0;
-        }
+    <!-- <link rel="stylesheet" href="../CSS/style.css" > -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 
-        h1,
-        h2 {
-            text-align: center;
-            margin-top: 10px;
-        }
 
-        .form-container {
-            display: flex;
-            align-items: center;
-            justify-content: space-around;
-        }
-        .form2{
-            width: 285px;
-            height: 75px;
-        }
-
-        .form1{
-            height: 20px;
-        }
-        form {
-            max-width: 400px;
-            margin: 0 auto;
-            padding: 20px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            background-color: #fff;
-        }
-
-        label {
-            font-weight: bold;
-        }
-
-        input[type="text"],
-        input[type="date"],
-        input[type="number"],
-        input[type="email"],
-        input[type="tel"] {
-            width: calc(100% - 22px);
-            padding: 10px;
-            margin: 5px 0;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-        }
-
-        button {
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px 20px;
-            margin: 8px 0;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            width: calc(100% - 22px);
-            box-sizing: border-box;
-            font-size: 18px;
-
-        }
-
-        button:hover {
-            background-color: #45a049;
-        }
-
-        .button2 {
-            background-color: #04AA6D;
-            border: none;
-            color: white;
-            padding: 10px 25px;
-            text-align: center;
-            text-decoration: none;
-            font-size: 16px;
-            margin: 4px auto;
-            cursor: pointer;
-            border-radius: 20px;
-            width: 200px;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-
-        th,
-        td {
-            padding: 8px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
-
-        th {
-            background-color: #707070;
-        }
-
-        a {
-            text-decoration: none;
-            color: white;
-        }
-    </style>
 </head>
 
 <body>
     <h1>Employee Enrollment</h1>
-    <form action="/submit" method="post">
-        <label for="fname">First Name:</label>
-        <input type="text" name="fname" id="fname" required>
-        <br>
-        <label for="lname">Last Name:</label>
-        <input type="text" name="lname" id="lname" required>
-        <br>
-        <label for="dob">Date of Birth:</label>
-        <input type="date" name="dob" id="dob" required>
-        <br>
-        <label for="salary">Salary:</label>
-        <input type="number" name="salary" id="salary" required>
-        <br>
-        <label for="email">Email:</label>
-        <input type="email" name="email" id="email" required>
-        <br>
-        <label for="phone">Phone:</label>
-        <input type="tel" name="phone" id="phone" required>
-        <br>
-        <button type="submit">Enroll</button>
-    </form>
-    <hr>
-    <div class="form-container">
-        <form action="/search" method="post" class="form2">
-            <label for="search_field">Search By:</label>
-            <select name="search_field" id="search_field">
-                <option value="">-- Select Sorting Option --</option>
-                <option value="fname">First Name</option>
-                <option value="lname">Last Name</option>
-                <option value="dob">Date of Birth</option>
-                <option value="salary">Salary</option>
-                <option value="email">Email</option>
-                <option value="phone">Phone</option>
-            </select>
-            <br>
-            <label for="search_term">Search Term:</label>
-            <input type="text" name="search_term" id="search_term" required>
-            <br>
-            <!-- <button type="submit">Search</button> -->
-        </form>
-        <form action="/sort" method="get" class="form1" id="sortForm">
-            <label for="option">Sort by:</label>
-            <select name="option" id="option" onchange="document.getElementById('sortForm').submit()">
-                <option value="">-- Select Sorting Option --</option>
-                <option value="fname">First Name</option>
-                <option value="lname">Last Name</option>
-                <option value="dob">Date of Birth</option>
-                <option value="salary">Salary</option>
-                <option value="email">Email</option>
-                <option value="phone">Phone</option>
-            </select>
-            <!-- <button type="submit" style="cursor: pointer; padding: 2px 8px; font-size: 18px;">Sort</button> -->
-        </form>
-        <!-- <br> -->
+    <section class="outer">
 
-    </div>
-    <h2>List of Employees</h2>
-    <table>
-        <thead>
-            <tr>
-                <th><a href="/sort?option=fname">First name</a></th>
-                <th><a href="/sort?option=lname">Last name</a></th>
-                <th><a href="/sort?option=dob">Date of Birth</a></th>
-                <th><a href="/sort?option=salary">Salary</a></th>
-                <th><a href="/sort?option=email">Email</a></th>
-                <th><a href="/sort?option=phone">Phone</a></th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for employee in employees %}
-            <tr>
-                <td>{{ employee.fname }}</td>
-                <td>{{ employee.lname }}</td>
-                <td>{{ employee.dob }}</td>
-                <td>{{ employee.salary }}</td>
-                <td>{{ employee.email }}</td>
-                <td>{{ employee.phone }}</td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-    <div class="button-div" style="display: flex;">
-        <button class="button2"><a href="/reset" class="button2">Reset</a></button>
-    </div>
-
+        <form action="/submit" method="post" class="was-validated">
+            <label for="fname">First Name:</label>
+            <input type="text" name="fname" id="fname" class="form-control" required>
+            <!-- <div class="valid-feedback">Valid.</div> -->
+            <div class="invalid-feedback">Please fill out first name.</div>
+            
+            <label for="lname">Last Name:</label>
+            <input type="text" name="lname" id="lname" class="form-control" required>
+            <!-- <div class="valid-feedback">Valid.</div> -->
+            <div class="invalid-feedback">Please fill out last name.</div>
+            
+            <label for="dob">Date of Birth:</label>
+            <input type="date" name="dob" id="dob" class="form-control" required>
+            <!-- <div class="valid-feedback">Valid.</div> -->
+            <div class="invalid-feedback">Please fill out date of birth.</div>
+            
+            <label for="salary">Salary:</label>
+            <input type="number" name="salary" id="salary" class="form-control" required>
+            <!-- <div class="valid-feedback">Valid.</div> -->
+            <div class="invalid-feedback">Please fill salary.</div>
+            
+            <label for="email">Email:</label>
+            <input type="email" name="email" id="email" class="form-control" required>
+            <!-- <div class="valid-feedback">Valid.</div> -->
+            <div class="invalid-feedback">Please fill your email.</div>
+            
+            <label for="phone">Phone:</label>
+            <input type="tel" name="phone" id="phone" class="form-control" required>
+            <!-- <div class="valid-feedback">Valid.</div> -->
+            <div class="invalid-feedback">Please fill your mobile number.</div>
+            
+            <div class="button-div">
+                <button type="submit">Enroll</button>
+                <button class="button2"><a href="/reset" class="button2">Reset</a></button>
+            </div>
+        </form> 
+        
+        <!-- <hr> -->
+        <div class="form-div">
+            <div class="form-container">
+                <form action="/search" method="post" class="form2">
+                    <label for="search_field">Search By:</label>
+                    <select name="search_field" id="search_field">
+                        <option value="">-- Select Sorting Option --</option>
+                        <option value="fname">First Name</option>
+                        <option value="lname">Last Name</option>
+                        <option value="dob">Date of Birth</option>
+                        <option value="salary">Salary</option>
+                        <option value="email">Email</option>
+                        <option value="phone">Phone</option>
+                    </select>
+                    <label for="search_term" style="display: inline-block;">Search Term:</label>
+                    <input type="text" name="search_term" id="search_term" class="input-label" required>
+                    <br>
+                    <!-- <button type="submit">Search</button> -->
+                </form>
+                <form action="/sort" method="get" class="form1" id="sortForm">
+                    <label for="option">Sort by:</label>
+                    <select name="option" id="option" onchange="document.getElementById('sortForm').submit()">
+                        <option value="">-- Select Sorting Option --</option>
+                        <option value="fname">First Name</option>
+                        <option value="lname">Last Name</option>
+                        <option value="dob">Date of Birth</option>
+                        <option value="salary">Salary</option>
+                        <option value="email">Email</option>
+                        <option value="phone">Phone</option>
+                    </select>
+                    <!-- <button type="submit" style="cursor: pointer; padding: 2px 8px; font-size: 18px;">Sort</button> -->
+                </form>
+                <!-- <br> -->
+            </div>
+            <div class="table-div">
+                <h2 style="text-decoration: dashed; background-color: #fafafa; padding: 5px 10px;">List of Employees
+                </h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th><a href="/sort?option=fname">First name</a></th>
+                            <th><a href="/sort?option=lname">Last name</a></th>
+                            <th><a href="/sort?option=dob">Date of Birth</a></th>
+                            <th><a href="/sort?option=salary">Salary</a></th>
+                            <th><a href="/sort?option=email">Email</a></th>
+                            <th><a href="/sort?option=phone">Phone</a></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for employee in employees %}
+                        <tr>
+                            <td>{{ employee.fname }}</td>
+                            <td>{{ employee.lname }}</td>
+                            <td>{{ employee.dob }}</td>
+                            <td>{{ employee.salary }}</td>
+                            <td>{{ employee.email }}</td>
+                            <td>{{ employee.phone }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
 </body>
 
 </html>
