@@ -19,6 +19,13 @@
             margin-top: 10px;
         }
 
+        .form-container {
+            display: flex;
+        }
+
+        .form1{
+            height: 20px;
+        }
         form {
             max-width: 400px;
             margin: 0 auto;
@@ -91,7 +98,7 @@
         }
 
         th {
-            background-color: #f2f2f2;
+            background-color: #c7c2c2;
         }
 
         a {
@@ -125,10 +132,66 @@
         <button type="submit">Enroll</button>
     </form>
     <hr>
+    <div class="form-container">
+        <form action="/search" method="post" class="form2">
+            <label for="search_field">Search By:</label>
+            <select name="search_field" id="search_field">
+                <option value="">-- Select Sorting Option --</option>
+                <option value="fname">First Name</option>
+                <option value="lname">Last Name</option>
+                <option value="dob">Date of Birth</option>
+                <option value="salary">Salary</option>
+                <option value="email">Email</option>
+                <option value="phone">Phone</option>
+            </select>
+            <br>
+            <label for="search_term">Search Term:</label>
+            <input type="text" name="search_term" id="search_term" required>
+            <br>
+            <!-- <button type="submit">Search</button> -->
+        </form>
+        <form action="/sort" method="get" class="form1" id="sortForm">
+            <label for="option">Sort by:</label>
+            <select name="option" id="option" onchange="document.getElementById('sortForm').submit()">
+                <option value="">-- Select Sorting Option --</option>
+                <option value="fname">First Name</option>
+                <option value="lname">Last Name</option>
+                <option value="dob">Date of Birth</option>
+                <option value="salary">Salary</option>
+                <option value="email">Email</option>
+                <option value="phone">Phone</option>
+            </select>
+            <!-- <button type="submit" style="cursor: pointer; padding: 2px 8px; font-size: 18px;">Sort</button> -->
+        </form>
+        <!-- <br> -->
+
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th><a href="/sort?option=fname">First name</a></th>
+                <th><a href="/sort?option=lname">Last name</a></th>
+                <th><a href="/sort?option=dob">Date of Birth</a></th>
+                <th><a href="/sort?option=salary">Salary</a></th>
+                <th><a href="/sort?option=email">Email</a></th>
+                <th><a href="/sort?option=phone">Phone</a></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for employee in employees %}
+            <tr>
+                <td>{{ employee.fname }}</td>
+                <td>{{ employee.lname }}</td>
+                <td>{{ employee.dob }}</td>
+                <td>{{ employee.salary }}</td>
+                <td>{{ employee.email }}</td>
+                <td>{{ employee.phone }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
     <div class="button-div" style="display: flex;">
-        <button class="button2"><a href="/search">Search</a></button>
-        <button class="button2"><a href="/display">Sort</a></button>
-        <button class="button2"><a href="/display" class="button2">All employees</a></button>
+        <button class="button2"><a href="/reset" class="button2">Reset</a></button>
     </div>
 
 </body>
