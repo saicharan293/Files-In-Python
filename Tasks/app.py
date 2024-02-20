@@ -1,15 +1,40 @@
-from flask import Flask, redirect, render_template, Request, request
+from flask import Flask, render_template, request
+from flask_paginate import get_page_args,Pagination
 
 app = Flask(__name__)
 employees = [
     {"fname": "John", "lname": "Doe", "dob": "1990-01-01", "salary": 50000, "email": "john@example.com", "phone": 1234567890},
     {"fname": "Jane", "lname": "Smith", "dob": "1995-05-05", "salary": 60000, "email": "jane@example.com", "phone": 9876543210},
-    {"fname": "Alice", "lname": "Johnson", "dob": "1985-08-15", "salary": 70000, "email": "alice@example.com", "phone": 1112223333}
+    {"fname": "Alice", "lname": "Johnson", "dob": "1985-08-15", "salary": 70000, "email": "alice@example.com", "phone": 1112223333},
+    {"fname": "Michael", "lname": "Brown", "dob": "1982-03-20", "salary": 55000, "email": "michael@example.com", "phone": 5554443333},
+ 
 ]
+length=len(employees)
+users=list(range(100))
 
+
+def get_users(offset=0, per_page=5):
+    # Function to get paginated users
+    return employees[offset: offset + per_page]
 @app.route('/')
 def index():
-    return render_template('index.html')
+    page,_ ,offset=get_page_args(page_parameter="page",per_page_parameter="per_page")
+    total = len(employees)
+    per_page=6
+    if request.method == 'POST':
+        submit()
+    if total > 0 and total % per_page == 0:
+        # If the total number of employees is a multiple of per_page, add a blank entry to trigger pagination
+        employees.append({})
+    pagination_employees = get_users(offset=offset, per_page=per_page) # Change per_page to 5
+    
+    # total=len(users)
+    # pagination_users=get_users(offset=offset,per_page=per_page)
+    pagination=Pagination(page=page,per_page=per_page,total=total,css_framework='bootstrap4')
+    return render_template('index.html',employees=pagination_employees
+                           ,page=page,
+                           per_page=per_page,
+                           pagination=pagination)
 
 
 @app.route('/submit',methods=['POST'])

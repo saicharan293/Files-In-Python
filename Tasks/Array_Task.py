@@ -131,3 +131,12 @@ main()
 
     # high=int(input("Enter the highest place of salary "))
     # nth_salary(high)
+#    {"fname": "Emily", "lname": "Davis", "dob": "1993-11-10", "salary": 62000, "email": "emily@example.com", "phone": 9998887777},
+#     {"fname": "William", "lname": "Miller", "dob": "1987-07-25", "salary": 72000, "email": "william@example.com", "phone": 2223334444},
+#     {"fname": "Sophia", "lname": "Wilson", "dob": "1992-04-15", "salary": 58000, "email": "sophia@example.com", "phone": 7776665555},
+#     {"fname": "James", "lname": "Taylor", "dob": "1984-09-05", "salary": 65000, "email": "james@example.com", "phone": 3335557777},
+#     {"fname": "Olivia", "lname": "Martinez", "dob": "1989-12-30", "salary": 71000, "email": "olivia@example.com", "phone": 8887776666},
+#     {"fname": "Benjamin", "lname": "Hernandez", "dob": "1991-06-18", "salary": 59000, "email": "benjamin@example.com", "phone": 4446668888},
+#     {"fname": "Ethan", "lname": "Young", "dob": "1986-02-12", "salary": 68000, "email": "ethan@example.com", "phone": 6669993333},
+#     {"fname": "Isabella", "lname": "Garcia", "dob": "1994-10-08", "salary": 73000, "email": "isabella@example.com", "phone": 3337779999},
+#     {"fname": "Daniel", "lname": "Lopez", "dob": "1983-08-22", "salary": 60000, "email": "daniel@example.com", "phone": 7779991111}

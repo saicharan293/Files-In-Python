@@ -1,156 +1,175 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
-    margin: 0;
-    padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+  margin: 0;
+  padding: 0;
 }
 
 h1,
-h2 {
-    text-align: center;
-    margin-top: 10px;
+h2,
+h3 {
+  text-align: center;
+  margin-top: 12px;
+  margin-bottom: 0;
 }
 
 .form-div {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-    /* background-color: #eb3f3f; */
-    width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  /* background-color: #eb3f3f; */
+  width: 780px;
 }
 
 .form-container {
-    display: flex;
-    /* background-color: antiquewhite; */
-    height: 50px;
-    width: 90%;
+  display: flex;
+  /* background-color: antiquewhite; */
+  justify-content: center;
+  height: 50px;
+  width: 90%;
 }
 
 .form2 {
-    display: flex;
-    align-items: center;
-    gap: 11px;
-    width: 604px;
-    height: 60px;
-    padding: 10px;
+  display: flex;
+  align-items: center;
+  gap: 17px;
+  width: 604px;
+  height: 65px;
+  padding: 15px;
 }
 
 .form1 {
-    height: 60px;
-    width: 309px;
-    padding: 17px;
-    padding-left: 16px;
+  height: 65px;
+  width: 309px;
+  padding: 5px 10px;
+  /* padding-left: 10px; */
 }
 
 form {
-    width: 540px;
-    /* height: 200px; */
-    margin: 0 25px;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #fff;
-    gap: 10px;
+  width: 540px;
+  /* height: 200px; */
+  margin: 10px 20px;
+  padding: 10px 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+  gap: 10px;
 }
 
 label {
-    font-weight: bold;
+  /* font-weight: bold; */
+  font-size: 16px;
 }
 
-input[type="text"], input[type="date"], input[type="number"], input[type="email"], input[type="tel"] {
-    width: calc(100% - 22px);
-    height: 30px;
-    padding: 10px;
-    margin: 0px 0;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
+input[type="text"],
+input[type="date"],
+input[type="number"],
+input[type="email"],
+input[type="tel"] {
+  width: calc(100% - 22px);
+  height: 30px;
+  padding: 10px;
+  margin: 0px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
 }
 
 button {
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px 20px;
-    margin: 4px 0;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    width: 100px;
-    border-radius: 20px;
-    font-size: 16px;
-
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 20px;
+  margin: 4px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100px;
+  border-radius: 20px;
+  font-size: 16px;
 }
 
 button:hover {
-    background-color: #45a049;
+  background-color: #45a049;
 }
 
 .button2 {
-    background-color: #04AA6D;
-    border: none;
-    color: white;
-    padding: 5px 10px;
-    text-align: center;
-    text-decoration: none;
-    font-size: 16px;
-    margin: 4px 5px;
-    cursor: pointer;
-    border-radius: 20px;
-    height: 40px;
-    width: 120px;
+  background-color: #04aa6d;
+  border: none;
+  color: white;
+  padding: 5px 10px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  margin: 4px 5px;
+  cursor: pointer;
+  border-radius: 20px;
+  height: 40px;
+  width: 120px;
 }
 
 table {
-    width: 90%;
-    border-collapse: collapse;
-    margin-top: 20px;
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 0px;
 }
 
 th,
 td {
-    padding: 8px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
 }
 
 td {
-    border: 1px solid #ddd;
-    background-color: #fffcfc;
+  border: 1px solid #ddd;
+  background-color: #fffcfc;
 }
 
 th {
-    background-color: #707070;
+  background-color: #707070;
 }
 
 a {
-    text-decoration: none;
-    color: white;
+  text-decoration: none;
+  color: white;
 }
 
 .button-div {
-    margin-top: 10px;
-    display: flex;
-    justify-content: space-around;
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-around;
 }
 
 .outer {
-    display: flex;
+  display: flex;
+  justify-content: center;
+  width: 100%;
 }
 
 .table-div {
-    height: 100%;
-    width: 86%;
-    margin-top: 20px;
-    /* background-color: #ddd; */
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-    justify-content: flex-start;
+  height: 60%;
+  width: 87%;
+  margin-top: 50px;
+  background-color: #ddd;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: flex-start;
 }
 
 form .input-label {
-    display: inline-block;
-    width: 150px;
-    height: 30px;
+  display: inline-block;
+  width: 150px;
+  height: 30px;
 }
+
+select {
+  padding: 4px;
+}
+
+.center {
+  text-align: center;
+  margin: 10px auto;
+}
+
