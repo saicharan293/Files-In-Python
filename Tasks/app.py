@@ -1,38 +1,30 @@
 from flask import Flask, render_template, request
 from flask_paginate import get_page_args,Pagination
 
+# employees=[
+#     {"fname": "Emily", "lname": "Davis", "dob": "1993-11-10", "salary": 62000, "email": "emily@example.com", "phone": 9998887777},
+#     {"fname": "William", "lname": "Miller", "dob": "1987-07-25", "salary": 72000, "email": "william@example.com", "phone": 2223334444},
+#     {"fname": "Sophia", "lname": "Wilson", "dob": "1992-04-15", "salary": 58000, "email": "sophia@example.com", "phone": 7776665555},
+#     {"fname": "James", "lname": "Taylor", "dob": "1984-09-05", "salary": 65000, "email": "james@example.com", "phone": 3335557777},
+#     {"fname": "Olivia", "lname": "Martinez", "dob": "1989-12-30", "salary": 71000, "email": "olivia@example.com", "phone": 8887776666},
+#     {"fname": "Benjamin", "lname": "Hernandez", "dob": "1991-06-18", "salary": 59000, "email": "benjamin@example.com", "phone": 4446668888},
+#     {"fname": "Ethan", "lname": "Young", "dob": "1986-02-12", "salary": 68000, "email": "ethan@example.com", "phone": 6669993333},
+#     {"fname": "Isabella", "lname": "Garcia", "dob": "1994-10-08", "salary": 73000, "email": "isabella@example.com", "phone": 3337779999},
+#     {"fname": "Daniel", "lname": "Lopez", "dob": "1983-08-22", "salary": 60000, "email": "daniel@example.com", "phone": 7779991111}
+# ]
+employees=[]
+
+
 app = Flask(__name__)
-employees = [ ]
-length=len(employees)
-users=list(range(100))
 
-# def add_employee(fname, lname, dob, salary, email, phone):
-#     employees.append({'fname': fname, 'lname': lname, 'dob': dob, "salary": salary, 'email': email, 'phone': phone})
 
-def get_users(offset=0, per_page=5):
-    return employees[offset: offset + per_page]
-@app.route('/',methods=['POST','GET'])
+@app.route('/')
 def index():
-    global employees
-    page,_ ,offset=get_page_args(page_parameter="page",per_page_parameter="per_page")
-    total = len(employees)
-    per_page = 6  # Change per_page as desire
+    return render_template('index.html',employees=employees)
 
-        # Check if the total number of employees is divisible evenly by per_page
-    if offset >= total:
-        # If so, reset offset to the last page
-        offset = total - (total % per_page)
 
-    total = len(employees)
-    print("total is ",total)
-          # Update the total after adding the new employee
 
-    pagination_employees = get_users(offset=offset, per_page=per_page)
 
-    pagination = Pagination(page=page, per_page=per_page, total=total, css_framework='bootstrap4')
-
-    return render_template('index.html', employees=pagination_employees,
-                           page=page, per_page=per_page, pagination=pagination)
 
 
 @app.route('/submit',methods=['POST'])
@@ -40,9 +32,9 @@ def submit():
     fname=request.form['fname']
     lname=request.form['lname']
     dob=request.form['dob']
-    salary=int(request.form['salary'])
+    salary=request.form['salary']
     email=request.form['email']
-    phone=int(request.form['phone'])
+    phone=request.form['phone']
     employees.append({'fname':fname,'lname':lname,'dob':dob,"salary":salary,'email':email,'phone':phone})
     return render_template('index.html',employees=employees)
 
@@ -70,21 +62,7 @@ def sorting():
 def reset():
     return render_template('index.html',employees=employees)
     
-    # return render_template('form.html', result=listing)
 
-
-# @app.route('/highest-salary')
-# def highest_salary():
-#     num_high = int(request.args.get('num_high'))
-#     result = nth_salary(num_high)
-#     return render_template('form.html', result=listing)
-
-# @app.route('/dob-range')
-# def dob_range():
-#     start = request.args.get('start')
-#     end = request.args.get('end')
-#     result = dob_in_employees(start, end)
-#     return render_template('form.html', result=listing)
 
 if __name__ == '__main__':
     app.run(debug=True)

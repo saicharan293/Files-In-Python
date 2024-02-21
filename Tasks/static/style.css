@@ -148,7 +148,7 @@ a {
 }
 
 .table-div {
-  height: 60%;
+  height: 344px;
   width: 87%;
   margin-top: 50px;
   background-color: #ddd;
@@ -171,5 +171,25 @@ select {
 .center {
   text-align: center;
   margin: 10px auto;
+}
+.pagination{
+  margin: 10px auto;
+  text-align: center;
+}
+.pagination a {
+  text-decoration: none;
+  color: #333;
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  background-color: #f9f9f9;
+}
+
+.pagination a.active {
+  background-color: #337ab7;
+  color: #fff;
+}
+
+.pagination a:hover {
+  background-color: #ccc;
 }
 
