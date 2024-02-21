@@ -140,3 +140,7 @@ main()
 #     {"fname": "Ethan", "lname": "Young", "dob": "1986-02-12", "salary": 68000, "email": "ethan@example.com", "phone": 6669993333},
 #     {"fname": "Isabella", "lname": "Garcia", "dob": "1994-10-08", "salary": 73000, "email": "isabella@example.com", "phone": 3337779999},
 #     {"fname": "Daniel", "lname": "Lopez", "dob": "1983-08-22", "salary": 60000, "email": "daniel@example.com", "phone": 7779991111}
+# headings=['fname','lname','dob','salary','email','phone']
+# data=[['sai','charan','2000-03-02',20000,'sai@co.com',1112223333],
+#       ['emily','davis','1990-05-05',30000,'emily@co.com',2223334444],
+#       ['Miller','David','1987-09-09',50000,'miller@co.com',3334445555]]
